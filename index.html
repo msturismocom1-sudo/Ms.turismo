@@ -507,7 +507,6 @@
       background-color: #e2e8f0;
     }
 
-    /* Botão de ver imagem */
     .card-img-btn {
       position: absolute;
       bottom: 10px;
@@ -534,7 +533,6 @@
       transform: scale(1.1);
     }
 
-    /* Badge de modalidade */
     .card-badge {
       position: absolute;
       top: 10px;
@@ -599,7 +597,6 @@
 
     .btn-reserve:hover { background: var(--accent); }
 
-    /* Loading */
     .loading-cards {
       grid-column: 1 / -1;
       text-align: center;
@@ -800,7 +797,7 @@
       background: var(--white);
       border-radius: 14px;
       width: 100%;
-      max-width: 860px;
+      max-width: 900px;
       max-height: 92vh;
       overflow-y: auto;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
@@ -865,80 +862,142 @@
     .modal-destino-info h4 { font-size: 15px; color: var(--primary); font-weight: 600; margin-bottom: 2px; }
     .modal-destino-info span { font-size: 13px; color: var(--text-muted); }
 
-    .seats-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 6px;
+    /* ===== MAPA DE ASSENTOS ===== */
+    .seat-legend {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
-    .seats-count { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+    .seat-legend span { display: flex; align-items: center; gap: 6px; }
 
-    .bus-legend { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
-    .legend-item { display: flex; align-items: center; gap: 6px; }
-
-    .legend-box {
-      width: 16px;
-      height: 16px;
+    .seat-legend i {
+      width: 14px;
+      height: 14px;
       border-radius: 4px;
-      border: 1.5px solid var(--border);
-      background: var(--white);
+      display: inline-block;
     }
 
-    .legend-box.selected { background: var(--accent); border-color: var(--accent); }
-    .legend-box.occupied { background: #e2e8f0; border-color: #e2e8f0; }
+    .seat-legend i.available { background: #e5e7eb; border: 1px solid #cbd5e1; }
+    .seat-legend i.occupied { background: #ef4444; }
+    .seat-legend i.selected { background: var(--accent); }
 
-    .bus-front {
-      text-align: center;
-      color: var(--text-light);
-      font-size: 10.5px;
-      font-weight: 600;
+    .bus-map {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+      padding: 16px 12px;
+      border: 3px solid #9ca3af;
+      border-radius: 44px 44px 22px 22px;
+      background: #f9fafb;
+    }
+
+    .bus-front-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 6px 14px;
+      border-bottom: 2px solid #d1d5db;
+      margin-bottom: 14px;
+    }
+
+    .driver-box {
+      width: 54px;
+      height: 54px;
+      border: 2px solid #9ca3af;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #6b7280;
+      line-height: 1.2;
+    }
+
+    .front-label {
+      font-size: 10px;
+      color: #9ca3af;
       text-transform: uppercase;
       letter-spacing: 2px;
-      padding: 8px;
-      border: 1.5px dashed var(--border);
-      border-radius: 8px;
-      margin-bottom: 16px;
+      font-weight: 600;
     }
 
-    .seats-grid {
+    .seats-layout {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+      grid-template-columns: 1fr 28px 1fr;
+      gap: 4px;
+      align-items: start;
     }
 
-    .seats-grid .seat:nth-child(4n+3) { margin-left: 16px; }
+    .seats-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px 5px;
+    }
 
-    .seat {
-      aspect-ratio: 1 / 1;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
+    .aisle-label {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 9px;
+      writing-mode: vertical-rl;
+      letter-spacing: 3px;
+      padding: 8px 0;
+      align-self: stretch;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-      user-select: none;
     }
 
-    .seat:hover:not(.occupied):not(.selected) { border-color: var(--accent); color: var(--accent); }
+    .bus-door {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 2px solid #d1d5db;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
 
-    .seat.selected { background: var(--accent); border-color: var(--accent); color: white; }
+    .seat {
+      height: 38px;
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      background: #e5e7eb;
+      color: #374151;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s, border-color 0.15s;
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.08);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .seat:hover:not(.occupied):not(.selected) {
+      background: #bfdbfe;
+      transform: scale(1.04);
+    }
+
+    .seat.selected {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent-dark);
+    }
 
     .seat.occupied {
-      background: #e2e8f0;
-      border-color: #e2e8f0;
-      color: #cbd5e1;
+      background: #ef4444;
+      color: white;
+      border-color: #dc2626;
       cursor: not-allowed;
     }
 
+    /* ===== RESUMO / PAGAMENTO ===== */
     .modal-form h4 { font-size: 15px; color: var(--primary); margin-bottom: 16px; font-weight: 600; }
 
     .form-group { margin-bottom: 14px; }
@@ -979,9 +1038,95 @@
       font-size: 13px;
       color: var(--primary);
       margin-bottom: 16px;
+      line-height: 1.6;
     }
 
     .modal-summary strong { color: var(--accent-dark); }
+
+    .total-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .total-box strong {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+    }
+
+    /* Bloco Pix */
+    .pix-box {
+      display: none;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .pix-box.show { display: block; }
+
+    .pix-box h5 {
+      font-size: 13px;
+      color: #065f46;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pix-key-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px dashed #10b981;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .pix-key-row code {
+      flex: 1;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #065f46;
+      letter-spacing: 0.5px;
+      word-break: break-all;
+    }
+
+    .btn-copy-pix {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    .btn-copy-pix:hover { background: #059669; }
+    .btn-copy-pix.copied { background: #065f46; }
+
+    .pix-note {
+      font-size: 11.5px;
+      color: #047857;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
 
     .btn-confirmar {
       width: 100%;
@@ -1220,9 +1365,10 @@
       .toast { bottom: 14px; right: 14px; left: 14px; max-width: none; }
       .modal-body { padding: 20px; }
       .modal-header { padding: 16px 20px; }
-      .seats-grid .seat:nth-child(4n+3) { margin-left: 10px; }
-      .seats-grid { gap: 6px; }
-      .seat { font-size: 10px; }
+      .seats-col { gap: 5px 4px; }
+      .seat { height: 32px; font-size: 10px; }
+      .bus-map { padding: 12px 8px; }
+      .seats-layout { grid-template-columns: 1fr 20px 1fr; }
       .modal-galeria-body { padding: 20px; }
       .parceiro-card { padding: 24px 18px; }
     }
@@ -1402,9 +1548,11 @@
           </div>
           <p class="footer-brand-text">Viajar de ônibus nunca foi tão confortável e seguro. Conectamos você aos melhores destinos do Brasil.</p>
           <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/turismoo_ms?gwpx=YXpuMGFsMTNmczk1" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/558798112-8607" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+           
           </div>
         </div>
         <div>
@@ -1426,7 +1574,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 MS TURISMO Viagens e Turismo</p>
+        <p> 2026 MS TURISMO - developer ACR</p>
       </div>
     </div>
   </footer>
@@ -1521,14 +1669,14 @@
             <i class="fas fa-envelope"></i>
             <div>
               <strong>E-mail</strong>
-              <a href="mailto:contato@msturismo.com.br">contato@msturismo.com.br</a>
+              <a href="mariafilhaamada.98@gmail.com">mariafilhaamada.98@gmail.com</a>
             </div>
           </li>
           <li>
             <i class="fab fa-instagram"></i>
             <div>
               <strong>Instagram</strong>
-              <a href="#" target="_blank">@msturismo</a>
+              <a href="https://www.instagram.com/turismoo_ms?gwpx=YXpuMGFsMTNmczk1" target="_blank">@msturismo</a>
             </div>
           </li>
         </ul>
@@ -1580,23 +1728,47 @@
       </div>
       <div class="modal-body">
         <div class="modal-layout">
+
+          <!-- COLUNA ESQUERDA: MAPA -->
           <div>
             <div class="modal-destino-info" id="modalDestinoInfo"></div>
-            <div class="seats-label">
-              <span>Escolha seu assento</span>
-              <span class="seats-count" id="seatsCount">0 selecionado</span>
+
+            <div class="seat-legend">
+              <span><i class="available"></i> Disponível</span>
+              <span><i class="occupied"></i> Ocupado</span>
+              <span><i class="selected"></i> Selecionado</span>
             </div>
-            <div class="bus-legend">
-              <div class="legend-item"><div class="legend-box"></div> Livre</div>
-              <div class="legend-item"><div class="legend-box selected"></div> Selecionado</div>
-              <div class="legend-item"><div class="legend-box occupied"></div> Ocupado</div>
+
+            <div class="bus-map">
+              <div class="bus-front-row">
+                <div class="driver-box">
+                  <span>🧑‍✈️</span>
+                  <span>Motorista</span>
+                </div>
+                <span class="front-label">Frente</span>
+              </div>
+
+              <div class="seats-layout">
+                <div class="seats-col" id="leftSeats"></div>
+                <div class="aisle-label">Corredor</div>
+                <div class="seats-col" id="rightSeats"></div>
+              </div>
+
+              <div class="bus-door">🚪 Porta / Embarque</div>
             </div>
-            <div class="bus-front">Frente do ônibus</div>
-            <div class="seats-grid" id="seatsGrid"></div>
           </div>
+
+          <!-- COLUNA DIREITA: FORMULÁRIO -->
           <div class="modal-form">
             <h4>Seus dados</h4>
+
             <div class="modal-summary" id="modalSummary" style="display:none;"></div>
+
+            <div class="total-box">
+              <span>Total</span>
+              <strong id="totalPrice">R$ 0,00</strong>
+            </div>
+
             <form id="reservaForm">
               <div class="form-group">
                 <label for="nome">Nome completo</label>
@@ -1620,11 +1792,28 @@
                   <option value="Dinheiro">Dinheiro</option>
                 </select>
               </div>
+
+              <!-- BLOCO PIX -->
+              <div class="pix-box" id="pixBox">
+                <h5><i class="fab fa-pix"></i> Pague com Pix</h5>
+                <div class="pix-key-row">
+                  <code id="pixKey">46.405.413/0001-57</code>
+                  <button type="button" class="btn-copy-pix" id="btnCopyPix">
+                    <i class="fas fa-copy"></i> Copiar
+                  </button>
+                </div>
+                <p class="pix-note">
+                  Copie a chave acima, faça o Pix e depois clique em <strong>Confirmar reserva</strong>.
+                  Enviaremos sua reserva para confirmação.
+                </p>
+              </div>
+
               <button type="submit" class="btn-confirmar" id="btnEnviar">
                 <i class="fas fa-check"></i> Confirmar reserva
               </button>
             </form>
           </div>
+
         </div>
       </div>
     </div>
@@ -1691,7 +1880,7 @@
       { src: 'imagem5.jpeg', titulo: 'MS Turismo', local: 'Grupo de amigos', destaque: false },
       { src: 'imagem6.jpeg', titulo: 'Viagem', local: '', destaque: false },
       { src: 'imagem7.jpeg', titulo: 'Local', local: '', destaque: false },
-      { src: 'imagem8.jpeg', titulo: 'Grupo', local: 'Local', destaque: false }
+      { src: 'onibus.jpeg', titulo: 'Viagem', local: '', destaque: false },
     ];
 
     const galeriaGrid = document.getElementById('galeriaGrid');
@@ -1963,25 +2152,67 @@
     });
 
     /* ============================================================
-       MODAL DE RESERVA
+       MODAL DE RESERVA (mapa visual + Pix)
     ============================================================ */
     const modalOverlay = document.getElementById('modalOverlay');
     const modalClose = document.getElementById('modalClose');
-    const seatsGrid = document.getElementById('seatsGrid');
-    const seatsCount = document.getElementById('seatsCount');
+    const leftSeats = document.getElementById('leftSeats');
+    const rightSeats = document.getElementById('rightSeats');
     const modalSummary = document.getElementById('modalSummary');
     const modalDestinoInfo = document.getElementById('modalDestinoInfo');
+    const totalPriceEl = document.getElementById('totalPrice');
     const form = document.getElementById('reservaForm');
     const btnEnviar = document.getElementById('btnEnviar');
+    const pagamentoSelect = document.getElementById('pagamento');
+    const pixBox = document.getElementById('pixBox');
+    const pixKey = document.getElementById('pixKey');
+    const btnCopyPix = document.getElementById('btnCopyPix');
 
     let destinoAtual = null;
-    let assentoSelecionado = null;
+    let assentosSelecionados = [];
     let assentosOcupados = [];
+    let precoAssento = 0;
+
+    /* Mostra/oculta o bloco Pix */
+    pagamentoSelect.addEventListener('change', () => {
+      if (pagamentoSelect.value === 'Pix') {
+        pixBox.classList.add('show');
+      } else {
+        pixBox.classList.remove('show');
+      }
+    });
+
+    /* Copiar chave Pix */
+    btnCopyPix.addEventListener('click', async () => {
+      const chave = pixKey.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(chave);
+        btnCopyPix.classList.add('copied');
+        btnCopyPix.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+        setTimeout(() => {
+          btnCopyPix.classList.remove('copied');
+          btnCopyPix.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+        }, 2000);
+      } catch (err) {
+        const el = document.createElement('textarea');
+        el.value = chave;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        btnCopyPix.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+        setTimeout(() => {
+          btnCopyPix.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+        }, 2000);
+      }
+    });
 
     function abrirModal(destinoId) {
       destinoAtual = destinos.find(d => String(d.id) === String(destinoId));
       if (!destinoAtual) return;
-      assentoSelecionado = null;
+
+      assentosSelecionados = [];
+      precoAssento = parseFloat(destinoAtual.preco) || 0;
 
       modalDestinoInfo.innerHTML = `
         <img src="${destinoAtual.imagem || ''}" alt="${destinoAtual.nome}" onerror="this.style.display='none'">
@@ -1992,7 +2223,9 @@
       `;
 
       modalSummary.style.display = 'none';
+      pixBox.classList.remove('show');
       form.reset();
+      atualizarTotal();
       carregarAssentos(destinoAtual.slug || destinoAtual.id);
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -2009,11 +2242,11 @@
     });
 
     /* ============================================================
-       CARREGAR ASSENTOS OCUPADOS DO SUPABASE
+       CARREGAR ASSENTOS OCUPADOS
     ============================================================ */
     async function carregarAssentos(destinoId) {
-      assentoSelecionado = null;
-      seatsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:#94a3b8;font-size:13px;">Carregando assentos...</div>';
+      leftSeats.innerHTML = '';
+      rightSeats.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:10px;color:#94a3b8;font-size:12px;">Carregando...</div>';
 
       try {
         const { data, error } = await supabaseClient
@@ -2022,7 +2255,14 @@
           .eq('destino', String(destinoId));
 
         if (error) throw error;
-        assentosOcupados = (data || []).map(r => r.assento);
+
+        assentosOcupados = (data || []).flatMap(r => {
+          if (r.assento === null || r.assento === undefined) return [];
+          if (typeof r.assento === 'string' && r.assento.includes(',')) {
+            return r.assento.split(',').map(n => parseInt(n.trim(), 10)).filter(Boolean);
+          }
+          return [parseInt(r.assento, 10)];
+        }).filter(Boolean);
       } catch (err) {
         console.error('Erro ao carregar assentos:', err);
         assentosOcupados = [];
@@ -2032,47 +2272,63 @@
     }
 
     function renderizarAssentos() {
-      seatsGrid.innerHTML = '';
+      leftSeats.innerHTML = '';
+      rightSeats.innerHTML = '';
 
-      for (let i = 1; i <= TOTAL_ASSENTOS; i++) {
-        const seat = document.createElement('div');
+      for (let n = 1; n <= TOTAL_ASSENTOS; n++) {
+        const seat = document.createElement('button');
+        seat.type = 'button';
         seat.className = 'seat';
-        seat.textContent = i;
-        seat.dataset.numero = i;
+        seat.textContent = n;
+        seat.dataset.seat = n;
 
-        if (assentosOcupados.includes(i)) {
+        if (assentosOcupados.includes(n)) {
           seat.classList.add('occupied');
+          seat.disabled = true;
+          seat.title = 'Assento ocupado';
         } else {
-          seat.addEventListener('click', () => selecionarAssento(seat, i));
+          seat.title = 'Assento ' + n;
+          seat.addEventListener('click', () => toggleSeat(n, seat));
         }
 
-        seatsGrid.appendChild(seat);
+        if (n % 2 !== 0) {
+          leftSeats.appendChild(seat);
+        } else {
+          rightSeats.appendChild(seat);
+        }
+      }
+    }
+
+    function toggleSeat(numero, el) {
+      if (el.classList.contains('occupied')) return;
+
+      if (assentosSelecionados.includes(numero)) {
+        assentosSelecionados = assentosSelecionados.filter(n => n !== numero);
+        el.classList.remove('selected');
+      } else {
+        assentosSelecionados.push(numero);
+        el.classList.add('selected');
       }
 
+      assentosSelecionados.sort((a, b) => a - b);
+      atualizarTotal();
       atualizarResumo();
     }
 
-    function selecionarAssento(seatEl, numero) {
-      const anterior = seatsGrid.querySelector('.seat.selected');
-      if (anterior) anterior.classList.remove('selected');
-
-      if (assentoSelecionado === numero) {
-        assentoSelecionado = null;
-      } else {
-        seatEl.classList.add('selected');
-        assentoSelecionado = numero;
-      }
-
-      atualizarResumo();
+    function atualizarTotal() {
+      const total = assentosSelecionados.length * precoAssento;
+      totalPriceEl.textContent = total.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
     }
 
     function atualizarResumo() {
-      if (assentoSelecionado) {
-        seatsCount.textContent = '1 selecionado';
+      if (assentosSelecionados.length > 0) {
         modalSummary.style.display = 'block';
-        modalSummary.innerHTML = `Destino: <strong>${destinoAtual.nome}</strong> · Assento: <strong>${assentoSelecionado}</strong>`;
+        modalSummary.innerHTML = `Destino: <strong>${destinoAtual.nome}</strong><br>
+          Assento(s): <strong>${assentosSelecionados.join(', ')}</strong>`;
       } else {
-        seatsCount.textContent = '0 selecionado';
         modalSummary.style.display = 'none';
       }
     }
@@ -2116,8 +2372,8 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      if (!assentoSelecionado) {
-        mostrarToast('error', 'Atenção', 'Selecione um assento antes de confirmar.');
+      if (assentosSelecionados.length === 0) {
+        mostrarToast('error', 'Atenção', 'Selecione pelo menos um assento.');
         return;
       }
 
@@ -2135,25 +2391,40 @@
       btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
       try {
-        const { error } = await supabaseClient
-          .from('reservas')
-          .insert([{
-            nome,
-            telefone,
-            cpf,
-            pagamento,
-            destino: String(destinoAtual.slug || destinoAtual.id),
-            assento: assentoSelecionado
-          }]);
+        const linhas = assentosSelecionados.map(numero => ({
+          nome,
+          telefone,
+          cpf,
+          pagamento,
+          destino: String(destinoAtual.slug || destinoAtual.id),
+          assento: numero
+        }));
+
+        const { error } = await supabaseClient.from('reservas').insert(linhas);
 
         if (error) {
           if (error.code === '23505') {
-            throw new Error('Este assento acabou de ser reservado. Escolha outro.');
+            throw new Error('Um dos assentos acabou de ser reservado. Escolha outro.');
           }
           throw error;
         }
 
-        mostrarToast('success', 'Reserva confirmada!', `${destinoAtual.nome} · Assento ${assentoSelecionado}`);
+        mostrarToast(
+          'success',
+          'Reserva confirmada!',
+          `${destinoAtual.nome} · Assento(s) ${assentosSelecionados.join(', ')}`
+        );
+
+        if (pagamento === 'Pix') {
+          setTimeout(() => {
+            mostrarToast(
+              'success',
+              'Pague via Pix',
+              'Chave: 46.405.413/0001-57 — envie o comprovante no WhatsApp.'
+            );
+          }, 1500);
+        }
+
         fecharModal();
       } catch (err) {
         console.error(err);
