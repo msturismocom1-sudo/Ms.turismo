@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MS TURISMO | Viagens de Ônibus</title>
+  <title>MS TURISMO</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
       --border: #e8ecf1;
       --white: #ffffff;
       --error: #ef4444;
+      --success: #10b981;
       --whatsapp: #25d366;
       --whatsapp-dark: #1da851;
     }
@@ -63,11 +64,7 @@
       text-decoration: none;
     }
 
-    .logo img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
+    .logo img { height: 44px; width: auto; display: block; }
 
     .logo-name {
       font-family: 'Poppins', sans-serif;
@@ -117,11 +114,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .hero .container {
-      display: flex;
-      align-items: center;
-      gap: 64px;
-    }
+    .hero .container { display: flex; align-items: center; gap: 64px; }
 
     .hero-content { flex: 1; }
 
@@ -178,46 +171,8 @@
       letter-spacing: 1px;
     }
 
-    /* ========== SPONSORS (topo) ========== */
-    .sponsors {
-      background: var(--white);
-      padding: 44px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .sponsors-label {
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 28px;
-    }
-
-    .sponsors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 36px;
-      align-items: center;
-      justify-items: center;
-    }
-
-    .sponsor-item img {
-      max-width: 130px;
-      max-height: 42px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
     /* ========== BARRA DE BOTÕES ========== */
-    .menu-rapido {
-      background: var(--white);
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-    }
+    .menu-rapido { background: var(--white); padding: 32px 0; border-bottom: 1px solid var(--border); }
 
     .menu-rapido-grid {
       display: grid;
@@ -265,7 +220,6 @@
 
     /* ========== SECTIONS ========== */
     .section { padding: 72px 0; }
-
     .section-head { text-align: center; margin-bottom: 48px; }
 
     .section-tag {
@@ -294,7 +248,7 @@
       line-height: 1.7;
     }
 
-    /* ========== GALERIA (dentro de modal) ========== */
+    /* ========== GALERIA ========== */
     .galeria-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -333,12 +287,7 @@
 
     .galeria-item:hover .galeria-overlay { opacity: 1; }
 
-    .galeria-overlay span {
-      color: white;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 1.4;
-    }
+    .galeria-overlay span { color: white; font-size: 12px; font-weight: 500; line-height: 1.4; }
 
     .galeria-zoom {
       position: absolute;
@@ -358,15 +307,9 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .galeria-item:hover .galeria-zoom {
-      opacity: 1;
-      transform: scale(1);
-    }
+    .galeria-item:hover .galeria-zoom { opacity: 1; transform: scale(1); }
 
-    .galeria-item.destaque {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
+    .galeria-item.destaque { grid-column: span 2; grid-row: span 2; }
 
     /* ========== LIGHTBOX ========== */
     .lightbox {
@@ -533,11 +476,7 @@
       font-weight: 600;
     }
 
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
+    .feature-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
     /* ========== DESTINATIONS ========== */
     .destinations { background: var(--bg); }
@@ -565,16 +504,54 @@
       background-size: cover;
       background-position: center;
       position: relative;
+      background-color: #e2e8f0;
+    }
+
+    /* Botão de ver imagem */
+    .card-img-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s, transform 0.2s, color 0.2s;
+      z-index: 2;
+    }
+
+    .card-img-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Badge de modalidade */
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(11, 46, 75, 0.85);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
     }
 
     .card-content { padding: 22px; flex: 1; display: flex; flex-direction: column; }
 
-    .card-content h3 {
-      font-size: 17px;
-      margin-bottom: 6px;
-      color: var(--primary);
-      font-weight: 600;
-    }
+    .card-content h3 { font-size: 17px; margin-bottom: 6px; color: var(--primary); font-weight: 600; }
 
     .card-content .location {
       color: var(--text-light);
@@ -604,18 +581,8 @@
       border-top: 1px solid var(--border);
     }
 
-    .price {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 17px;
-      color: var(--primary);
-    }
-
-    .price small {
-      font-weight: 400;
-      font-size: 12px;
-      color: var(--text-light);
-    }
+    .price { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 17px; color: var(--primary); }
+    .price small { font-weight: 400; font-size: 12px; color: var(--text-light); }
 
     .btn-reserve {
       background: var(--primary);
@@ -631,6 +598,27 @@
     }
 
     .btn-reserve:hover { background: var(--accent); }
+
+    /* Loading */
+    .loading-cards {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .loading-cards i { font-size: 28px; margin-bottom: 12px; display: block; color: var(--accent); }
+
+    .empty-cards {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .empty-cards i { font-size: 40px; margin-bottom: 16px; display: block; color: var(--border); }
 
     /* ========== TESTIMONIALS ========== */
     .testimonials { background: var(--white); }
@@ -648,19 +636,9 @@
       border: 1px solid var(--border);
     }
 
-    .stars {
-      color: var(--accent);
-      font-size: 12px;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
+    .stars { color: var(--accent); font-size: 12px; margin-bottom: 12px; letter-spacing: 2px; }
 
-    .testimonial-card p {
-      font-size: 14px;
-      color: var(--text);
-      margin-bottom: 18px;
-      line-height: 1.7;
-    }
+    .testimonial-card p { font-size: 14px; color: var(--text); margin-bottom: 18px; line-height: 1.7; }
 
     .testimonial-author { display: flex; align-items: center; gap: 10px; }
 
@@ -678,16 +656,10 @@
       flex-shrink: 0;
     }
 
-    .author-info strong {
-      display: block;
-      font-size: 13px;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
+    .author-info strong { display: block; font-size: 13px; color: var(--primary); font-weight: 600; }
     .author-info span { font-size: 12px; color: var(--text-light); }
 
-    /* ========== PARCEIROS (abaixo de depoimentos) ========== */
+    /* ========== PARCEIROS ========== */
     .parceiros { background: var(--bg); }
 
     .parceiros-grid {
@@ -708,10 +680,7 @@
       transition: border-color 0.2s, transform 0.2s;
     }
 
-    .parceiro-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
+    .parceiro-card:hover { border-color: var(--accent); transform: translateY(-4px); }
 
     .parceiro-logo {
       width: 100%;
@@ -731,20 +700,9 @@
       display: block;
     }
 
-    .parceiro-card h3 {
-      font-size: 16px;
-      color: var(--primary);
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
+    .parceiro-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 6px; font-weight: 600; }
 
-    .parceiro-card p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.6;
-      flex: 1;
-    }
+    .parceiro-card p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; flex: 1; }
 
     .btn-parceiro {
       display: inline-flex;
@@ -766,11 +724,7 @@
     .btn-parceiro:hover { background: var(--accent); }
 
     /* ========== FOOTER ========== */
-    footer {
-      background: var(--primary-dark);
-      color: #94a3b8;
-      padding: 48px 0 22px;
-    }
+    footer { background: var(--primary-dark); color: #94a3b8; padding: 48px 0 22px; }
 
     .footer-grid {
       display: grid;
@@ -790,40 +744,15 @@
 
     .footer-grid ul { list-style: none; }
     .footer-grid ul li { margin-bottom: 9px; }
-    .footer-grid a {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
+    .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 13px; transition: color 0.2s; }
     .footer-grid a:hover { color: var(--accent); }
 
-    .footer-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .footer-brand img {
-      height: 38px;
-      width: auto;
-      display: block;
-    }
-
-    .footer-brand .logo-name {
-      color: white;
-      font-size: 18px;
-    }
-
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .footer-brand img { height: 38px; width: auto; display: block; }
+    .footer-brand .logo-name { color: white; font-size: 18px; }
     .footer-brand .logo-name span { color: var(--accent); }
 
-    .footer-brand-text {
-      font-size: 13px;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
+    .footer-brand-text { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
 
     .social-links { display: flex; gap: 8px; }
 
@@ -894,11 +823,7 @@
       border-radius: 14px 14px 0 0;
     }
 
-    .modal-header h3 {
-      font-size: 18px;
-      color: var(--primary);
-      font-weight: 600;
-    }
+    .modal-header h3 { font-size: 18px; color: var(--primary); font-weight: 600; }
 
     .modal-close {
       background: transparent;
@@ -936,24 +861,9 @@
       border: 1px solid var(--border);
     }
 
-    .modal-destino-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .modal-destino-info h4 {
-      font-size: 15px;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .modal-destino-info span {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
+    .modal-destino-info img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background: #e2e8f0; }
+    .modal-destino-info h4 { font-size: 15px; color: var(--primary); font-weight: 600; margin-bottom: 2px; }
+    .modal-destino-info span { font-size: 13px; color: var(--text-muted); }
 
     .seats-label {
       font-size: 13px;
@@ -965,21 +875,9 @@
       align-items: center;
     }
 
-    .seats-count {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    .seats-count { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 
-    .bus-legend {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
+    .bus-legend { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
     .legend-item { display: flex; align-items: center; gap: 6px; }
 
     .legend-box {
@@ -991,6 +889,7 @@
     }
 
     .legend-box.selected { background: var(--accent); border-color: var(--accent); }
+    .legend-box.occupied { background: #e2e8f0; border-color: #e2e8f0; }
 
     .bus-front {
       text-align: center;
@@ -1029,20 +928,18 @@
       user-select: none;
     }
 
-    .seat:hover:not(.selected) { border-color: var(--accent); color: var(--accent); }
+    .seat:hover:not(.occupied):not(.selected) { border-color: var(--accent); color: var(--accent); }
 
-    .seat.selected {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
+    .seat.selected { background: var(--accent); border-color: var(--accent); color: white; }
+
+    .seat.occupied {
+      background: #e2e8f0;
+      border-color: #e2e8f0;
+      color: #cbd5e1;
+      cursor: not-allowed;
     }
 
-    .modal-form h4 {
-      font-size: 15px;
-      color: var(--primary);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
+    .modal-form h4 { font-size: 15px; color: var(--primary); margin-bottom: 16px; font-weight: 600; }
 
     .form-group { margin-bottom: 14px; }
 
@@ -1086,13 +983,13 @@
 
     .modal-summary strong { color: var(--accent-dark); }
 
-    .btn-whatsapp {
+    .btn-confirmar {
       width: 100%;
       padding: 13px;
       font-size: 14px;
       border-radius: 8px;
       margin-top: 6px;
-      background: var(--whatsapp);
+      background: var(--accent);
       color: white;
       border: none;
       cursor: pointer;
@@ -1105,8 +1002,8 @@
       transition: background 0.2s;
     }
 
-    .btn-whatsapp:hover { background: var(--whatsapp-dark); }
-    .btn-whatsapp:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-confirmar:hover { background: var(--accent-dark); }
+    .btn-confirmar:disabled { opacity: 0.6; cursor: not-allowed; }
 
     /* ========== MODAIS SIMPLES ========== */
     .modal-simple {
@@ -1150,17 +1047,8 @@
       margin-bottom: 14px;
     }
 
-    .promo-card h4 {
-      color: var(--primary);
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .promo-card p {
-      color: var(--text-muted);
-      font-size: 13.5px;
-      line-height: 1.6;
-    }
+    .promo-card h4 { color: var(--primary); font-size: 15px; margin-bottom: 6px; }
+    .promo-card p { color: var(--text-muted); font-size: 13.5px; line-height: 1.6; }
 
     .promo-card .promo-tag {
       display: inline-block;
@@ -1257,21 +1145,19 @@
     }
 
     .toast.show { transform: translateX(0); }
-    .toast i { font-size: 18px; color: var(--error); }
+    .toast.success { border-left-color: var(--success); }
+    .toast.error { border-left-color: var(--error); }
+    .toast i { font-size: 18px; }
+    .toast.success i { color: var(--success); }
+    .toast.error i { color: var(--error); }
     .toast-content strong { display: block; font-size: 13.5px; margin-bottom: 1px; }
     .toast-content span { font-size: 12.5px; color: var(--text-muted); }
 
     /* ========== RESPONSIVO ========== */
     @media (max-width: 900px) {
-      .hero .container {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-
+      .hero .container { flex-direction: column; text-align: center; gap: 40px; }
       .hero-image { order: -1; margin-top: 0; }
       .hero-content { order: 1; }
-
       .hero-content p { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
       .hero-stats { justify-content: center; }
@@ -1286,10 +1172,7 @@
         gap: 10px;
       }
 
-      .galeria-item.destaque {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
+      .galeria-item.destaque { grid-column: span 2; grid-row: span 1; }
 
       .lightbox { padding: 24px; }
       .lightbox-prev { left: 10px; }
@@ -1315,44 +1198,18 @@
       .hero-stats { gap: 22px; }
       .hero-stat strong { font-size: 18px; }
 
-      .hero-image img {
-        max-height: 240px;
-        object-fit: cover;
-      }
+      .hero-image img { max-height: 240px; object-fit: cover; }
 
-      .menu-rapido-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      .menu-rapido-btn {
-        padding: 16px 10px;
-        font-size: 12.5px;
-      }
-      .menu-rapido-btn i {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
+      .menu-rapido-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .menu-rapido-btn { padding: 16px 10px; font-size: 12.5px; }
+      .menu-rapido-btn i { width: 40px; height: 40px; font-size: 16px; }
 
-      .galeria-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 130px;
-        gap: 8px;
-      }
-
-      .galeria-item.destaque {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; gap: 8px; }
+      .galeria-item.destaque { grid-column: span 2; grid-row: span 1; }
       .galeria-overlay span { font-size: 11px; }
 
       .lightbox { padding: 16px; }
-      .lightbox-prev, .lightbox-next {
-        width: 42px;
-        height: 42px;
-        font-size: 15px;
-      }
+      .lightbox-prev, .lightbox-next { width: 42px; height: 42px; font-size: 15px; }
       .lightbox-prev { left: 4px; }
       .lightbox-next { right: 4px; }
       .lightbox-img { max-height: 70vh; }
@@ -1390,8 +1247,6 @@
         <img src="slider.png" alt="Ônibus de viagem">
       </div>
       <div class="hero-content">
-        
-        
         <div class="hero-actions">
           <a href="#destinos" class="btn">Ver destinos</a>
         </div>
@@ -1436,18 +1291,15 @@
         <h2 class="section-title">Por que viajar com a MS TURISMO</h2>
         <p class="section-subtitle">Segurança, conforto e preços justos em cada quilômetro.</p>
       </div>
-      
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Segurança máxima</h3>
-          <p>Monitoramento 24h e motoristas treinados.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
-          <h3>Cancelamento grátis</h3>
-          <p>Cancele até 24h antes sem custo.</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Segurança máxima</h3>
+        <p>Monitoramento 24h e motoristas treinados.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
+        <h3>Cancelamento ainda NÃO ativo</h3>
+        <p>Em breve. Cancele até 24h antes sem custo.</p>
       </div>
     </div>
   </section>
@@ -1458,9 +1310,14 @@
       <div class="section-head">
         <span class="section-tag">Destinos</span>
         <h2 class="section-title">Escolha seu próximo destino</h2>
-        <p class="section-subtitle">Selecione o destino, escolha seu assento e finalize pelo WhatsApp.</p>
+        <p class="section-subtitle">Selecione o destino, escolha seu assento e confirme sua reserva.</p>
       </div>
-      <div class="cards-grid" id="cardsGrid"></div>
+      <div class="cards-grid" id="cardsGrid">
+        <div class="loading-cards">
+          <i class="fas fa-spinner fa-spin"></i>
+          Carregando destinos...
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1500,7 +1357,7 @@
     </div>
   </section>
 
-  <!-- ========== PARCEIROS (abaixo de depoimentos) ========== -->
+  <!-- ========== PARCEIROS ========== -->
   <section class="section parceiros" id="parceiros">
     <div class="container">
       <div class="section-head">
@@ -1509,30 +1366,27 @@
         <p class="section-subtitle">Conheça nossos parceiros e entre em contato diretamente com cada um.</p>
       </div>
       <div class="parceiros-grid">
-        <!-- Parceiro 1 -->
         <div class="parceiro-card">
-          <div class="parceiro-logo">
-            <img src="mss.png" alt="Parceiro 1">
-          </div>
+          <div class="parceiro-logo"><img src="mss.png" alt="Parceiro 1"></div>
           <h3>MS Turismo</h3>
           <p>Transporte rodoviário com conforto e segurança para todo o Brasil.</p>
           <a href="https://wa.me/5587981128607" target="_blank" class="btn-parceiro">
             <i class="fab fa-whatsapp"></i> Visitar / Contato
           </a>
         </div>
-
-        <!-- Parceiro 2 -->
         <div class="parceiro-card">
-          <div class="parceiro-logo">
-            <img src="lumen.png" alt="Parceiro 2">
-          </div>
+          <div class="parceiro-logo"><img src="lumen.png" alt="Parceiro 2"></div>
           <h3>Lumen</h3>
           <p>Soluções em iluminação e tecnologia para veículos e empresas.</p>
-          <a href="https://lumenperegrinacoestur.com.br/" target="_blank" class="btn-parceiro">
+          <a href="https://wa.me/5587981128607" target="_blank" class="btn-parceiro">
             <i class="fab fa-whatsapp"></i> Visitar / Contato
           </a>
         </div>
-      
+        <div class="parceiro-card">
+          <div class="parceiro-logo"><img src="cadastur.png" alt="Parceiro 3"></div>
+          <h3>Cadastur</h3>
+          <p>Cadastro oficial de prestadores de serviços turísticos do Brasil.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1548,7 +1402,7 @@
           </div>
           <p class="footer-brand-text">Viajar de ônibus nunca foi tão confortável e seguro. Conectamos você aos melhores destinos do Brasil.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/turismoo_ms?utm_source=ig_web_button_share_sheet&rpxt=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
           </div>
@@ -1572,7 +1426,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p> 2026 MS TURISMO - desenvolvido por ACR </p>
+        <p>© 2026 MS TURISMO Viagens e Turismo</p>
       </div>
     </div>
   </footer>
@@ -1631,23 +1485,8 @@
         </button>
       </div>
       <div class="modal-simple-body">
-        <ul class="calendar-list">
-          <li>
-            <div class="cal-date"><span class="cal-day">28</span><span class="cal-month">Dez</span></div>
-            <div class="cal-info"><strong>Réveillon Petrolândia</strong><span>Saída 28/12 · 3 dias</span></div>
-          </li>
-          <li>
-            <div class="cal-date"><span class="cal-day">15</span><span class="cal-month">Jan</span></div>
-            <div class="cal-info"><strong>Salvador Histórico</strong><span>Saída 15/01 · 4 dias</span></div>
-          </li>
-          <li>
-            <div class="cal-date"><span class="cal-day">05</span><span class="cal-month">Fev</span></div>
-            <div class="cal-info"><strong>Roma & Fátima</strong><span>Saída 05/02 · 10 dias</span></div>
-          </li>
-          <li>
-            <div class="cal-date"><span class="cal-day">20</span><span class="cal-month">Mar</span></div>
-            <div class="cal-info"><strong>Chapada Diamantina</strong><span>Saída 20/03 · 5 dias</span></div>
-          </li>
+        <ul class="calendar-list" id="calendarList">
+          <li><div style="padding:14px 0;color:#94a3b8;font-size:13px;">Carregando...</div></li>
         </ul>
       </div>
     </div>
@@ -1689,7 +1528,7 @@
             <i class="fab fa-instagram"></i>
             <div>
               <strong>Instagram</strong>
-              <a href="https://www.instagram.com/turismoo_ms?utm_source=ig_web_button_share_sheet&rpxt=ZDNlZDc0MzIxNw==" target="_blank">@msturismo</a>
+              <a href="#" target="_blank">@msturismo</a>
             </div>
           </li>
         </ul>
@@ -1697,7 +1536,7 @@
     </div>
   </div>
 
-  <!-- ========== LIGHTBOX ========== -->
+  <!-- ========== LIGHTBOX (galeria) ========== -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <div class="lightbox-counter" id="lightboxCounter">1 / 8</div>
@@ -1714,6 +1553,19 @@
         <i class="fas fa-chevron-right"></i>
       </button>
       <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ========== LIGHTBOX DE DESTINOS ========== -->
+  <div class="lightbox" id="lightboxDestino">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxDestinoClose" aria-label="Fechar">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="lightbox-img-wrapper">
+        <img class="lightbox-img" id="lightboxDestinoImg" src="" alt="Imagem do destino">
+      </div>
+      <div class="lightbox-caption" id="lightboxDestinoCaption"></div>
     </div>
   </div>
 
@@ -1737,6 +1589,7 @@
             <div class="bus-legend">
               <div class="legend-item"><div class="legend-box"></div> Livre</div>
               <div class="legend-item"><div class="legend-box selected"></div> Selecionado</div>
+              <div class="legend-item"><div class="legend-box occupied"></div> Ocupado</div>
             </div>
             <div class="bus-front">Frente do ônibus</div>
             <div class="seats-grid" id="seatsGrid"></div>
@@ -1767,8 +1620,8 @@
                   <option value="Dinheiro">Dinheiro</option>
                 </select>
               </div>
-              <button type="submit" class="btn-whatsapp" id="btnEnviar">
-                <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+              <button type="submit" class="btn-confirmar" id="btnEnviar">
+                <i class="fas fa-check"></i> Confirmar reserva
               </button>
             </form>
           </div>
@@ -1779,19 +1632,53 @@
 
   <!-- ========== TOAST ========== -->
   <div class="toast" id="toast">
-    <i class="fas fa-exclamation-circle"></i>
+    <i class="fas fa-check-circle"></i>
     <div class="toast-content">
-      <strong id="toastTitle">Atenção</strong>
+      <strong id="toastTitle">Sucesso</strong>
       <span id="toastMessage">Mensagem</span>
     </div>
   </div>
 
+  <!-- ========== SUPABASE SDK ========== -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     /* ============================================================
-       CONFIGURAÇÃO DO WHATSAPP
-       Número atualizado: 87 98112-8607
+       CONFIGURAÇÃO DO SUPABASE
     ============================================================ */
-    const WHATSAPP_NUMBER = '5587981128607';
+    const SUPABASE_URL = 'https://xskuytsfwplrqhldwhhe.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhza3V5dHNmd3BscnFobGR3aGhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzMzg1NjIsImV4cCI6MjEwOTkxNDU2Mn0.yU582BL2vQRriWN4wiQLcQ07KiRjMJAOtnjPEykcwjc';
+
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    /* ============================================================
+       UTILITÁRIOS
+    ============================================================ */
+    function formatarPreco(preco) {
+      if (preco === null || preco === undefined || preco === '') return 'Consulte';
+      const num = Number(preco);
+      if (isNaN(num)) return 'Consulte';
+      return 'R$ ' + num.toFixed(2).replace('.', ',');
+    }
+
+    function formatarData(dataStr) {
+      if (!dataStr) return null;
+      const [ano, mes, dia] = dataStr.split('-');
+      return { dia, mes, ano };
+    }
+
+    const MESES_ABREV = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+    function formatarPeriodo(inicio, fim) {
+      if (!inicio && !fim) return 'Data a definir';
+      const d1 = formatarData(inicio);
+      const d2 = formatarData(fim);
+      if (d1 && d2) {
+        if (inicio === fim) return `${d1.dia}/${d1.mes}/${d1.ano}`;
+        return `${d1.dia}/${d1.mes} a ${d2.dia}/${d2.mes}/${d2.ano}`;
+      }
+      if (d1) return `A partir de ${d1.dia}/${d1.mes}/${d1.ano}`;
+      return 'Data a definir';
+    }
 
     /* ============================================================
        GALERIA DE CLIENTES
@@ -1825,7 +1712,7 @@
     });
 
     /* ============================================================
-       LIGHTBOX
+       LIGHTBOX (galeria)
     ============================================================ */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
@@ -1883,6 +1770,41 @@
     });
 
     /* ============================================================
+       LIGHTBOX DE DESTINOS
+    ============================================================ */
+    const lightboxDestino = document.getElementById('lightboxDestino');
+    const lightboxDestinoImg = document.getElementById('lightboxDestinoImg');
+    const lightboxDestinoCaption = document.getElementById('lightboxDestinoCaption');
+    const lightboxDestinoClose = document.getElementById('lightboxDestinoClose');
+
+    function abrirLightboxDestino(src, titulo, local) {
+      if (!src) {
+        mostrarToast('error', 'Imagem indisponível', 'Este destino ainda não possui imagem.');
+        return;
+      }
+      lightboxDestinoImg.src = src;
+      lightboxDestinoImg.alt = `${titulo} - ${local}`;
+      lightboxDestinoCaption.innerHTML = `${titulo}<small>${local}</small>`;
+      lightboxDestino.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharLightboxDestino() {
+      lightboxDestino.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightboxDestinoClose.addEventListener('click', fecharLightboxDestino);
+    lightboxDestino.addEventListener('click', (e) => {
+      if (e.target === lightboxDestino) fecharLightboxDestino();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxDestino.classList.contains('active')) {
+        fecharLightboxDestino();
+      }
+    });
+
+    /* ============================================================
        BOTÕES DO MENU RÁPIDO
     ============================================================ */
     function abrirModalSimples(id) {
@@ -1931,63 +1853,113 @@
     });
 
     /* ============================================================
-       DESTINOS
+       CARREGAR DESTINOS DO SUPABASE (tabela: viagens)
     ============================================================ */
-    const destinos = [
-      {
-        id: 'PE',
-        nome: 'Petrolândia',
-        local: 'PE, Brasil',
-        descricao: 'Réveillon na Praia do Sobrado.',
-        preco: '550',
-        imagem: 'petrolandia.jpg'
-      },
-      {
-        id: 'it',
-        nome: 'Itália',
-        local: 'Lisboa, Fátima, Roma, Assis',
-        descricao: 'Genazzano - Santuário de Nossa Senhora do Bom Conselho.',
-        preco: '666,33',
-        imagem: ''
-      },
-      {
-        id: 'salvador',
-        nome: 'Salvador',
-        local: 'BA, Brasil',
-        descricao: 'Pelourinho, elevador Lacerda e a rica culinária baiana.',
-        preco: '00',
-        imagem: ''
-      },
-      {
-        id: 'chapada',
-        nome: 'Chapada Diamantina',
-        local: 'BA, Brasil',
-        descricao: 'Cachoeiras, grutas e trilhas em cenários impressionantes.',
-        preco: '00',
-        imagem: ''
-      }
-    ];
-
+    let destinos = [];
     const TOTAL_ASSENTOS = 50;
-
     const cardsGrid = document.getElementById('cardsGrid');
 
-    destinos.forEach(d => {
-      const card = document.createElement('div');
-      card.className = 'destination-card';
-      card.innerHTML = `
-        <div class="card-img" style="background-image: url('${d.imagem}');"></div>
-        <div class="card-content">
-          <h3>${d.nome}</h3>
-          <div class="location"><i class="fas fa-map-marker-alt"></i> ${d.local}</div>
-          <p>${d.descricao}</p>
-          <div class="card-footer">
-            <div class="price">R$ ${d.preco} <small>/pessoa</small></div>
-            <button class="btn-reserve" data-destino-id="${d.id}">Reservar</button>
+    async function carregarDestinos() {
+      try {
+        const { data, error } = await supabaseClient
+          .from('viagens')
+          .select('*')
+          .order('data_inicio', { ascending: true, nullsFirst: false });
+
+        if (error) throw error;
+
+        destinos = data || [];
+        renderizarCards();
+        renderizarCalendario();
+      } catch (err) {
+        console.error('Erro ao carregar destinos:', err);
+        cardsGrid.innerHTML = `
+          <div class="empty-cards">
+            <i class="fas fa-exclamation-triangle"></i>
+            Não foi possível carregar os destinos. Tente novamente mais tarde.
           </div>
-        </div>
-      `;
-      cardsGrid.appendChild(card);
+        `;
+      }
+    }
+
+    function renderizarCards() {
+      cardsGrid.innerHTML = '';
+
+      if (destinos.length === 0) {
+        cardsGrid.innerHTML = `
+          <div class="empty-cards">
+            <i class="fas fa-map-marked-alt"></i>
+            Nenhum destino disponível no momento.
+          </div>
+        `;
+        return;
+      }
+
+      destinos.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'destination-card';
+
+        const imagem = d.imagem || '';
+        const modalidade = d.modalidade || 'Excursão';
+        const precoFormatado = formatarPreco(d.preco);
+        const periodo = formatarPeriodo(d.data_inicio, d.data_fim);
+
+        card.innerHTML = `
+          <div class="card-img" style="background-image: url('${imagem}');">
+            <span class="card-badge">${modalidade}</span>
+            <button class="card-img-btn" data-img-src="${imagem}" data-img-title="${d.nome}" data-img-local="${d.slug || ''}" title="Ver imagem em detalhes">
+              <i class="fas fa-expand"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <h3>${d.nome}</h3>
+            <div class="location"><i class="fas fa-calendar-alt"></i> ${periodo}</div>
+            <p>${d.descricao || 'Entre em contato para mais informações sobre este destino.'}</p>
+            <div class="card-footer">
+              <div class="price">${precoFormatado} <small>/pessoa</small></div>
+              <button class="btn-reserve" data-destino-id="${d.id}">Reservar</button>
+            </div>
+          </div>
+        `;
+        cardsGrid.appendChild(card);
+      });
+    }
+
+    /* ============================================================
+       CALENDÁRIO DINÂMICO
+    ============================================================ */
+    function renderizarCalendario() {
+      const calendarList = document.getElementById('calendarList');
+      const comData = destinos.filter(d => d.data_inicio).slice(0, 6);
+
+      if (comData.length === 0) {
+        calendarList.innerHTML = '<li><div style="padding:14px 0;color:#94a3b8;font-size:13px;">Nenhuma viagem agendada.</div></li>';
+        return;
+      }
+
+      calendarList.innerHTML = comData.map(d => {
+        const dt = formatarData(d.data_inicio);
+        const mes = MESES_ABREV[parseInt(dt.mes, 10) - 1] || dt.mes;
+        return `
+          <li>
+            <div class="cal-date"><span class="cal-day">${dt.dia}</span><span class="cal-month">${mes}</span></div>
+            <div class="cal-info"><strong>${d.nome}</strong><span>Saída ${dt.dia}/${dt.mes} · ${d.modalidade || 'Excursão'}</span></div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    /* ============================================================
+       EVENTO: BOTÃO VER IMAGEM DO DESTINO
+    ============================================================ */
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.card-img-btn');
+      if (btn) {
+        const src = btn.dataset.imgSrc;
+        const titulo = btn.dataset.imgTitle;
+        const local = btn.dataset.imgLocal;
+        abrirLightboxDestino(src, titulo, local);
+      }
     });
 
     /* ============================================================
@@ -2004,22 +1976,24 @@
 
     let destinoAtual = null;
     let assentoSelecionado = null;
+    let assentosOcupados = [];
 
     function abrirModal(destinoId) {
-      destinoAtual = destinos.find(d => d.id === destinoId);
+      destinoAtual = destinos.find(d => String(d.id) === String(destinoId));
+      if (!destinoAtual) return;
       assentoSelecionado = null;
 
       modalDestinoInfo.innerHTML = `
-        <img src="${destinoAtual.imagem}" alt="${destinoAtual.nome}">
+        <img src="${destinoAtual.imagem || ''}" alt="${destinoAtual.nome}" onerror="this.style.display='none'">
         <div>
           <h4>${destinoAtual.nome}</h4>
-          <span>${destinoAtual.local} · R$ ${destinoAtual.preco}/pessoa</span>
+          <span>${formatarPeriodo(destinoAtual.data_inicio, destinoAtual.data_fim)} · ${formatarPreco(destinoAtual.preco)}/pessoa</span>
         </div>
       `;
 
       modalSummary.style.display = 'none';
       form.reset();
-      renderizarAssentos();
+      carregarAssentos(destinoAtual.slug || destinoAtual.id);
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -2034,28 +2008,61 @@
       if (e.target === modalOverlay) fecharModal();
     });
 
+    /* ============================================================
+       CARREGAR ASSENTOS OCUPADOS DO SUPABASE
+    ============================================================ */
+    async function carregarAssentos(destinoId) {
+      assentoSelecionado = null;
+      seatsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:#94a3b8;font-size:13px;">Carregando assentos...</div>';
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('reservas')
+          .select('assento')
+          .eq('destino', String(destinoId));
+
+        if (error) throw error;
+        assentosOcupados = (data || []).map(r => r.assento);
+      } catch (err) {
+        console.error('Erro ao carregar assentos:', err);
+        assentosOcupados = [];
+      }
+
+      renderizarAssentos();
+    }
+
     function renderizarAssentos() {
       seatsGrid.innerHTML = '';
+
       for (let i = 1; i <= TOTAL_ASSENTOS; i++) {
         const seat = document.createElement('div');
         seat.className = 'seat';
         seat.textContent = i;
         seat.dataset.numero = i;
-        seat.addEventListener('click', () => selecionarAssento(seat, i));
+
+        if (assentosOcupados.includes(i)) {
+          seat.classList.add('occupied');
+        } else {
+          seat.addEventListener('click', () => selecionarAssento(seat, i));
+        }
+
         seatsGrid.appendChild(seat);
       }
+
       atualizarResumo();
     }
 
     function selecionarAssento(seatEl, numero) {
       const anterior = seatsGrid.querySelector('.seat.selected');
       if (anterior) anterior.classList.remove('selected');
+
       if (assentoSelecionado === numero) {
         assentoSelecionado = null;
       } else {
         seatEl.classList.add('selected');
         assentoSelecionado = numero;
       }
+
       atualizarResumo();
     }
 
@@ -2104,13 +2111,13 @@
     });
 
     /* ============================================================
-       ENVIAR PARA O WHATSAPP (87 98112-8607)
+       ENVIAR RESERVA PARA O SUPABASE
     ============================================================ */
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       if (!assentoSelecionado) {
-        mostrarToast('Atenção', 'Selecione um assento antes de enviar.');
+        mostrarToast('error', 'Atenção', 'Selecione um assento antes de confirmar.');
         return;
       }
 
@@ -2120,35 +2127,41 @@
       const pagamento = document.getElementById('pagamento').value;
 
       if (!nome || !telefone || !cpf || !pagamento) {
-        mostrarToast('Atenção', 'Preencha todos os campos.');
+        mostrarToast('error', 'Atenção', 'Preencha todos os campos.');
         return;
       }
 
-      const mensagem = 
-`*NOVA RESERVA - MS TURISMO*
-
-*Destino:* ${destinoAtual.nome}
-*Assento:* ${assentoSelecionado}
-*Valor:* R$ ${destinoAtual.preco}/pessoa
-
-*Nome completo:* ${nome}
-*WhatsApp:* ${telefone}
-*CPF:* ${cpf}
-*Forma de pagamento:* ${pagamento}
-
-_Aguardo confirmação da reserva._`;
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
-
       btnEnviar.disabled = true;
-      btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Abrindo WhatsApp...';
+      btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-      setTimeout(() => {
-        window.open(url, '_blank');
-        btnEnviar.disabled = false;
-        btnEnviar.innerHTML = '<i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp';
+      try {
+        const { error } = await supabaseClient
+          .from('reservas')
+          .insert([{
+            nome,
+            telefone,
+            cpf,
+            pagamento,
+            destino: String(destinoAtual.slug || destinoAtual.id),
+            assento: assentoSelecionado
+          }]);
+
+        if (error) {
+          if (error.code === '23505') {
+            throw new Error('Este assento acabou de ser reservado. Escolha outro.');
+          }
+          throw error;
+        }
+
+        mostrarToast('success', 'Reserva confirmada!', `${destinoAtual.nome} · Assento ${assentoSelecionado}`);
         fecharModal();
-      }, 400);
+      } catch (err) {
+        console.error(err);
+        mostrarToast('error', 'Erro ao reservar', err.message || 'Tente novamente.');
+      } finally {
+        btnEnviar.disabled = false;
+        btnEnviar.innerHTML = '<i class="fas fa-check"></i> Confirmar reserva';
+      }
     });
 
     /* ============================================================
@@ -2159,16 +2172,24 @@ _Aguardo confirmação da reserva._`;
     const toastMessage = document.getElementById('toastMessage');
     let toastTimer;
 
-    function mostrarToast(titulo, mensagem) {
+    function mostrarToast(tipo, titulo, mensagem) {
       clearTimeout(toastTimer);
-      toast.className = 'toast show';
+      toast.className = 'toast show ' + tipo;
       toastTitle.textContent = titulo;
       toastMessage.textContent = mensagem;
 
+      const icon = toast.querySelector('i');
+      icon.className = tipo === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+
       toastTimer = setTimeout(() => {
         toast.classList.remove('show');
-      }, 4000);
+      }, 4500);
     }
+
+    /* ============================================================
+       INICIALIZAÇÃO
+    ============================================================ */
+    carregarDestinos();
   </script>
 </body>
 </html>
