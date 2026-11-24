@@ -1030,6 +1030,11 @@
       box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.12);
     }
 
+    /* Campo de documento (CPF/RG) */
+    #documento {
+      text-transform: uppercase;
+    }
+
     .modal-summary {
       background: #fef3e7;
       border: 1px solid #fbd5a3;
@@ -1776,12 +1781,23 @@
               </div>
               <div class="form-group">
                 <label for="telefone">Número (WhatsApp)</label>
-                <input type="tel" id="telefone" placeholder="(11) 99999-9999" required>
+                <input type="tel" id="telefone" placeholder="(55) 99999-9999" required>
               </div>
+
+              <!-- ===== NOVO: TIPO DE DOCUMENTO ===== -->
               <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
+                <label for="tipoDocumento">Tipo de documento</label>
+                <select id="tipoDocumento" required>
+                  <option value="CPF">CPF</option>
+                  <option value="RG">RG</option>
+                </select>
               </div>
+
+              <div class="form-group">
+                <label for="documento" id="labelDocumento">CPF</label>
+                <input type="text" id="documento" placeholder="000.000.000-00" maxlength="14" required>
+              </div>
+
               <div class="form-group">
                 <label for="pagamento">Forma de pagamento</label>
                 <select id="pagamento" required>
@@ -2225,6 +2241,8 @@
       modalSummary.style.display = 'none';
       pixBox.classList.remove('show');
       form.reset();
+      // Restaura o campo de documento para o padrão (CPF)
+      atualizarCampoDocumento();
       atualizarTotal();
       carregarAssentos(destinoAtual.slug || destinoAtual.id);
       modalOverlay.classList.add('active');
@@ -2339,18 +2357,68 @@
     });
 
     /* ============================================================
-       MÁSCARAS
+       MÁSCARAS — DOCUMENTO (CPF ou RG)
     ============================================================ */
-    const inputCpf = document.getElementById('cpf');
-    const inputTelefone = document.getElementById('telefone');
+    const inputDocumento = document.getElementById('documento');
+    const selectTipoDocumento = document.getElementById('tipoDocumento');
+    const labelDocumento = document.getElementById('labelDocumento');
 
-    inputCpf.addEventListener('input', (e) => {
-      let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    /* Aplica máscara de CPF: 000.000.000-00 */
+    function mascaraCPF(valor) {
+      let v = valor.replace(/\D/g, '').slice(0, 11);
       v = v.replace(/(\d{3})(\d)/, '$1.$2');
       v = v.replace(/(\d{3})(\d)/, '$1.$2');
       v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-      e.target.value = v;
+      return v;
+    }
+
+    /* Aplica máscara de RG: 00.000.000-0 (aceita letras, ex.: MG-12.345.678-9) */
+    function mascaraRG(valor) {
+      let v = valor.replace(/[^0-9A-Za-z]/g, '').toUpperCase().slice(0, 9);
+      if (v.length > 8) {
+        v = v.replace(/^(\w{2})(\w{3})(\w{3})(\w{1})$/, '$1.$2.$3-$4');
+      } else if (v.length > 5) {
+        v = v.replace(/^(\w{2})(\w{3})(\w{0,3})$/, '$1.$2.$3');
+      } else if (v.length > 2) {
+        v = v.replace(/^(\w{2})(\w{0,3})$/, '$1.$2');
+      }
+      return v;
+    }
+
+    /* Atualiza label, placeholder, maxlength e máscara conforme o tipo */
+    function atualizarCampoDocumento() {
+      const tipo = selectTipoDocumento.value;
+      labelDocumento.textContent = tipo;
+
+      if (tipo === 'CPF') {
+        inputDocumento.placeholder = '000.000.000-00';
+        inputDocumento.maxLength = 14;
+      } else {
+        inputDocumento.placeholder = '00.000.000-0';
+        inputDocumento.maxLength = 12;
+      }
+
+      // Reaplica a máscara no valor atual (se houver)
+      const valorAtual = inputDocumento.value;
+      if (valorAtual) {
+        inputDocumento.value = tipo === 'CPF' ? mascaraCPF(valorAtual) : mascaraRG(valorAtual);
+      }
+    }
+
+    selectTipoDocumento.addEventListener('change', atualizarCampoDocumento);
+
+    inputDocumento.addEventListener('input', (e) => {
+      const tipo = selectTipoDocumento.value;
+      e.target.value = tipo === 'CPF' ? mascaraCPF(e.target.value) : mascaraRG(e.target.value);
     });
+
+    // Inicializa com o padrão (CPF)
+    atualizarCampoDocumento();
+
+    /* ============================================================
+       MÁSCARA — TELEFONE
+    ============================================================ */
+    const inputTelefone = document.getElementById('telefone');
 
     inputTelefone.addEventListener('input', (e) => {
       let v = e.target.value.replace(/\D/g, '').slice(0, 11);
@@ -2379,10 +2447,11 @@
 
       const nome = document.getElementById('nome').value.trim();
       const telefone = document.getElementById('telefone').value.trim();
-      const cpf = document.getElementById('cpf').value.trim();
+      const tipoDocumento = document.getElementById('tipoDocumento').value;
+      const documento = document.getElementById('documento').value.trim();
       const pagamento = document.getElementById('pagamento').value;
 
-      if (!nome || !telefone || !cpf || !pagamento) {
+      if (!nome || !telefone || !documento || !pagamento) {
         mostrarToast('error', 'Atenção', 'Preencha todos os campos.');
         return;
       }
@@ -2394,7 +2463,8 @@
         const linhas = assentosSelecionados.map(numero => ({
           nome,
           telefone,
-          cpf,
+          cpf: documento,              // mantém a coluna cpf existente
+          tipo_documento: tipoDocumento,
           pagamento,
           destino: String(destinoAtual.slug || destinoAtual.id),
           assento: numero
